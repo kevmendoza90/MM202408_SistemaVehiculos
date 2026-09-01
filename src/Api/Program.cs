@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using Core.Interfaces;
 using Infrastructure.Repositories;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IMarcaRepository, MarcaRepository>();
 builder.Services.AddScoped<IVehiculoRepository, VehiculoRepository>();
 builder.Services.AddScoped<IVentaRepository, VentaRepository>();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IMarcaRepository).Assembly));
 
 var app = builder.Build();
 
