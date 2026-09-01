@@ -1,6 +1,0 @@
-@MM202408_SistemaVehiculos.API_HostAddress = http://localhost:5263
-
-GET {{MM202408_SistemaVehiculos.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
