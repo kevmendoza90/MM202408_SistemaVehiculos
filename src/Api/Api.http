@@ -1,6 +1,36 @@
 @Api_HostAddress = http://localhost:5220
 
-GET {{Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Crear una Marca
+POST {{Api_HostAddress}}/api/Marcas
+Content-Type: application/json
 
-###
+{
+  "nombre": "Toyota"
+}
+
+### Obtener todas las Marcas
+GET {{Api_HostAddress}}/api/Marcas
+
+### Crear un Vehiculo (usa el Id de Marca que te devolvió el POST anterior)
+POST {{Api_HostAddress}}/api/Vehiculos
+Content-Type: application/json
+
+{
+  "modelo": "Corolla",
+  "anio": 2024,
+  "cantidadPuertas": 4,
+  "marcaId": 1
+}
+
+### Obtener todos los Vehiculos
+GET {{Api_HostAddress}}/api/Vehiculos
+
+### Realizar Venta de un Vehiculo (usa el Id de Vehiculo que te devolvió el POST anterior)
+POST {{Api_HostAddress}}/api/Vehiculos/1/venta
+Content-Type: application/json
+
+{
+  "vehiculoId": 1,
+  "cantidad": 1,
+  "totalVenta": 25000.50
+}
